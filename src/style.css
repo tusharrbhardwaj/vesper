@@ -1,0 +1,577 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  font-family: 'Manrope', sans-serif;
+  color: #191817;
+  background: #f2ede4;
+
+  --paper: #f2ede4;
+  --ink: #191817;
+  --stone: #b9b0a4;
+  --ash: #77736d;
+  --olive: #535747;
+  --serif: 'Cormorant Garamond', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  background: var(--paper);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.navbar {
+  height: 90px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(25, 24, 23, 0.13);
+}
+
+.brand,
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+
+.brand span,
+.footer-brand span {
+  color: var(--olive);
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 42px;
+}
+
+.desktop-nav a,
+.nav-cta {
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.desktop-nav a {
+  color: var(--ash);
+  transition: color 0.25s ease;
+}
+
+.desktop-nav a:hover {
+  color: var(--ink);
+}
+
+.nav-cta {
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 7px;
+}
+
+.nav-cta span {
+  margin-left: 8px;
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hero {
+  padding: 28px 7% 0;
+}
+
+.hero-topline,
+.hero-bottomline,
+.image-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.61rem;
+  letter-spacing: 0.13em;
+  color: var(--ash);
+}
+
+.hero-heading {
+  padding: 105px 0 65px;
+  max-width: 1000px;
+}
+
+.eyebrow {
+  font-size: 0.64rem;
+  letter-spacing: 0.17em;
+  color: var(--ash);
+  text-transform: uppercase;
+}
+
+.hero-heading h1,
+.section-heading h2,
+.manifesto h2,
+.contact h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+
+.hero-heading h1 {
+  margin-top: 23px;
+  font-size: clamp(4.5rem, 10vw, 9.5rem);
+  line-height: 0.82;
+}
+
+.hero-heading h1 em,
+.section-heading h2 em,
+.manifesto h2 em,
+.contact h2 em {
+  font-weight: 400;
+  color: var(--olive);
+}
+
+.hero-description {
+  margin: 30px 0 0 5px;
+  max-width: 330px;
+  color: var(--ash);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.hero-image {
+  position: relative;
+  height: min(65vw, 650px);
+  min-height: 340px;
+  overflow: hidden;
+  background: var(--stone);
+}
+
+.hero-image img,
+.story-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.hero-image img {
+  object-position: center 55%;
+}
+
+.hero-image:hover img,
+.story-card:hover img {
+  transform: scale(1.035);
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px;
+  color: white;
+  background: linear-gradient(transparent, rgba(0,0,0,0.45));
+}
+
+.hero-bottomline {
+  padding: 22px 0 28px;
+}
+
+.section-padding {
+  padding: 125px 7%;
+}
+
+.stories {
+  border-top: 1px solid rgba(25, 24, 23, 0.15);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 65px;
+}
+
+.section-heading h2 {
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  line-height: 0.95;
+  margin-top: 20px;
+}
+
+.text-link {
+  font-size: 0.72rem;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 8px;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  column-gap: 7%;
+  row-gap: 90px;
+}
+
+.story-card {
+  min-width: 0;
+}
+
+.story-offset {
+  margin-top: 130px;
+}
+
+.story-offset-small {
+  margin-top: 100px;
+}
+
+.story-image {
+  height: 480px;
+  overflow: hidden;
+  background: var(--stone);
+}
+
+.story-card:nth-child(2) .story-image,
+.story-card:nth-child(4) .story-image {
+  height: 390px;
+}
+
+.story-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding-top: 18px;
+}
+
+.story-meta h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.65rem;
+}
+
+.story-meta p,
+.story-meta > span {
+  margin-top: 7px;
+  font-size: 0.59rem;
+  letter-spacing: 0.12em;
+  color: var(--ash);
+}
+
+.manifesto {
+  padding: 145px 12%;
+  background: #e8e1d6;
+  text-align: center;
+}
+
+.manifesto h2 {
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  line-height: 0.95;
+  margin: 45px 0 35px;
+}
+
+.manifesto-copy {
+  max-width: 470px;
+  margin: auto;
+  color: var(--ash);
+  font-size: 0.85rem;
+  line-height: 1.9;
+}
+
+.signature {
+  display: block;
+  margin-top: 35px;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.contact {
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: clamp(4rem, 9vw, 9rem);
+  line-height: 0.9;
+  margin: 45px 0;
+}
+
+.contact-link {
+  display: inline-block;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.footer {
+  padding: 45px 7% 30px;
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 70px;
+}
+
+.footer-brand span {
+  color: #a6a98d;
+}
+
+.footer-top p {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #c1b8ab;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  font-size: 0.57rem;
+  letter-spacing: 0.12em;
+  color: #aaa39a;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    height: 75px;
+    padding: 0 6%;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 1px;
+    background: var(--ink);
+  }
+
+  .navbar.menu-open .desktop-nav {
+    display: flex;
+    position: absolute;
+    z-index: 10;
+    top: 75px;
+    left: 0;
+    right: 0;
+    padding: 30px 7%;
+    flex-direction: column;
+    gap: 25px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .hero {
+    padding: 22px 6% 0;
+  }
+
+  .hero-topline,
+  .hero-bottomline {
+    font-size: 0.48rem;
+  }
+
+  .hero-heading {
+    padding: 95px 0 45px;
+  }
+
+  .hero-heading h1 {
+    font-size: clamp(4rem, 14vw, 6rem);
+  }
+
+  .hero-image {
+    height: 520px;
+    min-height: 0;
+  }
+
+  .image-caption {
+    padding: 16px;
+    font-size: 0.48rem;
+  }
+
+  .section-padding {
+    padding: 85px 6%;
+  }
+
+  .section-heading {
+    display: block;
+    margin-bottom: 45px;
+  }
+
+  .text-link {
+    display: inline-block;
+    margin-top: 25px;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+    row-gap: 50px;
+  }
+
+  .story-offset,
+  .story-offset-small {
+    margin-top: 0;
+  }
+
+  .story-image,
+  .story-card:nth-child(2) .story-image,
+  .story-card:nth-child(4) .story-image {
+    height: 430px;
+  }
+
+  .manifesto {
+    padding: 100px 7%;
+  }
+
+  .contact h2 {
+    font-size: clamp(3.5rem, 13vw, 5.5rem);
+  }
+
+  .footer-top {
+    display: block;
+    padding-bottom: 45px;
+  }
+
+  .footer-top p {
+    margin-top: 15px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+
+
+
+/* =================================
+   VESPER — HERO REFINEMENT
+================================= */
+
+.hero-heading {
+  max-width: 1100px;
+  padding-top: clamp(90px, 12vw, 150px);
+  padding-bottom: clamp(55px, 7vw, 85px);
+}
+
+.hero-heading h1 {
+  font-size: clamp(5rem, 11vw, 10.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+}
+
+.hero-description {
+  max-width: 390px;
+  margin-top: 38px;
+  line-height: 1.9;
+}
+
+.hero-image {
+  height: min(65vw, 760px);
+  min-height: 500px;
+}
+
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.28),
+    transparent 30%
+  );
+}
+
+/* Mobile refinement */
+@media (max-width: 700px) {
+  .hero-heading {
+    padding-top: 75px;
+    padding-bottom: 42px;
+  }
+
+  .hero-heading h1 {
+    font-size: clamp(3.8rem, 14vw, 5.6rem);
+    line-height: 0.91;
+    letter-spacing: -0.06em;
+  }
+
+  .hero-description {
+    max-width: 310px;
+    margin-top: 27px;
+    font-size: 0.88rem;
+    line-height: 1.85;
+  }
+
+  .hero-image {
+    height: 125vw;
+    min-height: 460px;
+    max-height: 650px;
+  }
+
+  .hero-topline {
+    font-size: 0.46rem;
+  }
+}
