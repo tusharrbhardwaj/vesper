@@ -99,26 +99,6 @@ button {
   cursor: pointer;
 }
 
-.hero {
-  padding: 28px 7% 0;
-}
-
-.hero-topline,
-.hero-bottomline,
-.image-caption {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 0.61rem;
-  letter-spacing: 0.13em;
-  color: var(--ash);
-}
-
-.hero-heading {
-  padding: 105px 0 65px;
-  max-width: 1000px;
-}
-
 .eyebrow {
   font-size: 0.64rem;
   letter-spacing: 0.17em;
@@ -135,66 +115,12 @@ button {
   letter-spacing: -0.055em;
 }
 
-.hero-heading h1 {
-  margin-top: 23px;
-  font-size: clamp(4.5rem, 10vw, 9.5rem);
-  line-height: 0.82;
-}
-
 .hero-heading h1 em,
 .section-heading h2 em,
 .manifesto h2 em,
 .contact h2 em {
   font-weight: 400;
   color: var(--olive);
-}
-
-.hero-description {
-  margin: 30px 0 0 5px;
-  max-width: 330px;
-  color: var(--ash);
-  font-size: 0.85rem;
-  line-height: 1.8;
-}
-
-.hero-image {
-  position: relative;
-  height: min(65vw, 650px);
-  min-height: 340px;
-  overflow: hidden;
-  background: var(--stone);
-}
-
-.hero-image img,
-.story-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.hero-image img {
-  object-position: center 55%;
-}
-
-.hero-image:hover img,
-.story-card:hover img {
-  transform: scale(1.035);
-}
-
-.image-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 25px;
-  color: white;
-  background: linear-gradient(transparent, rgba(0,0,0,0.45));
-}
-
-.hero-bottomline {
-  padding: 22px 0 28px;
 }
 
 .section-padding {
@@ -408,33 +334,6 @@ button {
     border-bottom: 1px solid var(--stone);
   }
 
-  .hero {
-    padding: 22px 6% 0;
-  }
-
-  .hero-topline,
-  .hero-bottomline {
-    font-size: 0.48rem;
-  }
-
-  .hero-heading {
-    padding: 95px 0 45px;
-  }
-
-  .hero-heading h1 {
-    font-size: clamp(4rem, 14vw, 6rem);
-  }
-
-  .hero-image {
-    height: 520px;
-    min-height: 0;
-  }
-
-  .image-caption {
-    padding: 16px;
-    font-size: 0.48rem;
-  }
-
   .section-padding {
     padding: 85px 6%;
   }
@@ -503,75 +402,305 @@ button {
 }
 
 
-
-
-
 /* =================================
-   VESPER — HERO REFINEMENT
+   VESPER — SNOWFALL HERO (concept B: projected shadow)
+   The wordmark lives in HTML/CSS on top of the footage, so its
+   perspective, opacity and softness can all be art-directed here.
 ================================= */
 
-.hero-heading {
-  max-width: 1100px;
-  padding-top: clamp(90px, 12vw, 150px);
-  padding-bottom: clamp(55px, 7vw, 85px);
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
-.hero-heading h1 {
-  font-size: clamp(5rem, 11vw, 10.5rem);
-  line-height: 0.88;
-  letter-spacing: -0.065em;
+/* Navigation floats over the video in ivory */
+.navbar--over-video {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: var(--paper);
+  border-bottom-color: rgba(242, 237, 228, 0.16);
 }
 
-.hero-description {
-  max-width: 390px;
-  margin-top: 38px;
-  line-height: 1.9;
+.navbar--over-video .brand span {
+  color: var(--stone);
 }
 
-.hero-image {
-  height: min(65vw, 760px);
-  min-height: 500px;
+.navbar--over-video .desktop-nav a {
+  color: rgba(242, 237, 228, 0.7);
 }
 
-.hero-image::after {
-  content: "";
+.navbar--over-video .desktop-nav a:hover {
+  color: var(--paper);
+}
+
+.navbar--over-video .nav-cta {
+  border-bottom-color: rgba(242, 237, 228, 0.6);
+}
+
+.navbar--over-video .menu-toggle span {
+  background: var(--paper);
+}
+
+.hero-snow {
+  --lamp-x: 60%;
+  --lamp-y: 30%;
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  background: #0d0d0e url('/images/vesper-winter-poster-landscape.jpg') center / cover;
+  color: var(--paper);
+  isolation: isolate;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+
+/* Warm pool of lamplight: lifts the lit snow so the shadow has something to fall on */
+.hero-light {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.28),
-    transparent 30%
-  );
+  mix-blend-mode: soft-light;
+  background:
+    radial-gradient(ellipse 55% 70% at calc(var(--lamp-x) - 12%) calc(var(--lamp-y) + 38%),
+      rgba(255, 214, 150, 0.55), transparent 70%);
 }
 
-/* Mobile refinement */
+/* Cinematic grade: deepen the edges, quiet the sky, keep the text legible */
+.hero-grade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(13, 13, 14, 0.55) 0%, transparent 22%),
+    linear-gradient(to top, rgba(13, 13, 14, 0.7) 0%, transparent 28%),
+    linear-gradient(to right, rgba(13, 13, 14, 0.55) 0%, transparent 45%),
+    radial-gradient(ellipse at 55% 45%, transparent 45%, rgba(8, 8, 9, 0.55) 100%);
+}
+
+/* The projected shadow: a ground plane tilted away from the viewer */
+.shadow-stage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4%;
+  height: 62%;
+  perspective: 900px;
+  perspective-origin: 62% -40%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 3.2s ease 0.4s;
+}
+
+.hero-snow.is-ready .shadow-stage {
+  opacity: 1;
+}
+
+.shadow-plane {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+  /* lie the word down on the snow and stretch it away from the lamp */
+  transform: rotateX(58deg) skewX(-26deg) scale(1.05, 1.55);
+}
+
+.shadow-word {
+  position: absolute;
+  left: 50%;
+  bottom: 2%;
+  translate: -54% 0;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(8rem, 25vw, 30rem);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: #0a0908;
+  mix-blend-mode: multiply;
+}
+
+/* Sharp, dense part of the shadow, nearest the object casting it */
+.shadow-core {
+  opacity: 0.62;
+  filter: blur(1.5px);
+  mask-image: linear-gradient(to top, transparent 15%, #000 70%);
+}
+
+/* Soft penumbra spreading toward the viewer */
+.shadow-penumbra {
+  opacity: 0.5;
+  filter: blur(9px);
+  mask-image: linear-gradient(to top, #000 10%, transparent 75%);
+}
+
+/* Static film grain */
+.hero-grain {
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hero-copy {
+  position: absolute;
+  z-index: 2;
+  left: 7%;
+  top: clamp(140px, 24vh, 260px);
+  max-width: 34rem;
+}
+
+.hero-label,
+.hero-foot {
+  font-size: 0.64rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(242, 237, 228, 0.72);
+}
+
+.hero-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero-label::before {
+  content: '';
+  width: 38px;
+  height: 1px;
+  background: currentColor;
+}
+
+.hero-tagline {
+  margin-top: 26px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.4vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  translate: 0 14px;
+  transition: opacity 1.8s ease 0.9s, translate 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s;
+}
+
+.hero-snow.is-ready .hero-tagline {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.hero-foot {
+  position: absolute;
+  z-index: 2;
+  left: 7%;
+  right: 7%;
+  bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--paper);
+}
+
+.cue-arrow {
+  display: inline-block;
+  animation: cue-drift 2.6s ease-in-out infinite;
+}
+
+@keyframes cue-drift {
+  0%, 100% { transform: translateY(-2px); opacity: 0.5; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+
+/* Phones: the original vertical frame, shadow lower and narrower */
+@media (max-aspect-ratio: 4/5) {
+  .hero-snow {
+    --lamp-x: 52%;
+    --lamp-y: 38%;
+    background-image: url('/images/vesper-winter-poster-portrait.jpg');
+  }
+
+  .shadow-stage {
+    height: 46%;
+    bottom: 2%;
+    perspective: 520px;
+    perspective-origin: 50% -60%;
+  }
+
+  .shadow-plane {
+    transform: rotateX(50deg) skewX(-14deg) scale(1, 1.8);
+  }
+
+  .shadow-word {
+    font-size: 27vw;
+    translate: -52% 0;
+  }
+
+  .shadow-core {
+    opacity: 0.75;
+  }
+
+  .hero-copy {
+    top: 118px;
+    left: 6%;
+    right: 6%;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.7rem, 7.6vw, 2.4rem);
+  }
+
+  .hero-foot {
+    left: 6%;
+    right: 6%;
+    bottom: 26px;
+    font-size: 0.56rem;
+  }
+
+  .hero-index {
+    display: none;
+  }
+}
+
 @media (max-width: 700px) {
-  .hero-heading {
-    padding-top: 75px;
-    padding-bottom: 42px;
+  .navbar.navbar--over-video.menu-open {
+    background: var(--paper);
+    color: var(--ink);
   }
 
-  .hero-heading h1 {
-    font-size: clamp(3.8rem, 14vw, 5.6rem);
-    line-height: 0.91;
-    letter-spacing: -0.06em;
+  .navbar--over-video.menu-open .desktop-nav a {
+    color: var(--ash);
   }
 
-  .hero-description {
-    max-width: 310px;
-    margin-top: 27px;
-    font-size: 0.88rem;
-    line-height: 1.85;
+  .navbar--over-video.menu-open .menu-toggle span {
+    background: var(--ink);
   }
+}
 
-  .hero-image {
-    height: 125vw;
-    min-height: 460px;
-    max-height: 650px;
-  }
-
-  .hero-topline {
-    font-size: 0.46rem;
+@media (prefers-reduced-motion: reduce) {
+  .cue-arrow {
+    animation: none;
   }
 }
